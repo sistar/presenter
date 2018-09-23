@@ -24,7 +24,10 @@ Resources:
     Properties:
       Handler: index.handler
       Runtime: python3.6
-      Policies: AWSIoTFullAccess
+      Role:
+        Fn::ImportValue:
+          !Join ['-', [!Ref 'ProjectId', !Ref 'AWS::Region', 'LambdaTrustRole']]
+      Policies: arn:aws:iam::aws:policy/AWSIoTFullAccess
       Events:
         GetEvent:
           Type: Api
