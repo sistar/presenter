@@ -13,7 +13,9 @@ def handler(event, context):
 
     response = iot_data_client.get_thing_shadow(thingName=thing_name)
     streamingBody = response["payload"]
-    jsonState = json.loads(streamingBody.read())
+    rawDataBytes = streamingBody.read()  # rawDataBytes is of type 'bytes' in, Python 3.x specific
+    rawDataString = rawDataBytes.decode('utf-8')  # Python 3.x specific
+    jsonState = json.loads(rawDataString)
     return {'statusCode': 200,
             'body': json.dumps(jsonState),
             'headers': {'Content-Type': 'application/json'}}
