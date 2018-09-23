@@ -27,47 +27,7 @@ Resources:
       Role:
         Fn::ImportValue:
           !Join ['-', [!Ref 'ProjectId', !Ref 'AWS::Region', 'LambdaTrustRole']]
-      Policies:
-      - Version: '2012-10-17'
-        Statement:
-        - Effect: Allow
-          Action:
-            - 'iot:TestInvokeAuthorizer'
-            - 'iot:GetOTAUpdateJob'
-            - 'iot:Connect'
-            - 'iot:GetRegistrationCode'
-            - 'iot:DescribeCertificate'
-            - 'iot:DescribeEndpoint'
-            - 'iot:GetJobDocument'
-            - 'iot:UpdateStream'
-            - 'iot:Subscribe'
-            - 'iot:DescribeRoleAlias'
-            - 'iot:GetThingShadow'
-            - 'iot:DescribeStream'
-            - 'iot:DescribeIndex'
-            - 'iot:GetEffectivePolicies'
-            - 'iot:Publish'
-            - 'iot:GetPolicyVersion'
-            - 'iot:GetPolicy'
-            - 'iot:GetTopicRule'
-            - 'iot:DescribeThing'
-            - 'iot:GetIndexingConfiguration'
-            - 'iot:GetLoggingOptions'
-            - 'iot:SearchIndex'
-            - 'iot:UpdateThingShadow'
-            - 'iot:Receive'
-            - 'iot:TestAuthorization'
-            - 'iot:DescribeDefaultAuthorizer'
-            - 'iot:DescribeCACertificate'
-            - 'iot:UpdateThing'
-            - 'iot:DescribeJob'
-            - 'iot:DescribeAuthorizer'
-            - 'iot:DescribeThingType'
-            - 'iot:DescribeJobExecution'
-            - 'cloudformation:Describe*'
-            - 'cloudformation:List*'
-            - 'cloudformation:Get*'
-          Resource: '*'
+      Policies: AWSIoTFullAccess
       Events:
         GetEvent:
           Type: Api
