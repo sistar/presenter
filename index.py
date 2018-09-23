@@ -1,6 +1,8 @@
 import json
 import datetime
-
+import boto3
+iot_client = boto3.client('iot')
+iot_data_client = boto3.client('iot-data')
 
 def handler(event, context):
     data = {
