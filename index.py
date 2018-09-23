@@ -5,7 +5,7 @@ iot_client = boto3.client('iot')
 iot_data_client = boto3.client('iot-data')
 
 def handler(event, context):
-    things = iot_client.list_things()
+    things = iot_client.list_things()["things"]
     summary = []
     for thing in things:
         # response = iot_client.describe_thing(thingName=thing_name)
